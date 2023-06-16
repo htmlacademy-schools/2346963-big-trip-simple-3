@@ -1,6 +1,7 @@
 import { getRandomInt } from '../util';
 import {TYPES, CITIES, getArrayFromType, DESCRIPTION} from './const.js';
-import { getDates } from '../dateApi';
+import { getDates, isPassed } from '../dateApi';
+import { FilterType } from './const.js';
 
 let i = 0;
 let pointId = 0;
@@ -40,3 +41,13 @@ export const generatePoint = () => {
   };
 };
 
+const filter = {
+  [FilterType.ALL]: (points) => points,
+  [FilterType.FUTURE]: (points) => points.filter((point) => isPassed(point.dateFrom))
+};
+
+
+export const generateFilter = (points) => Object.entries(filter).map(([filterName, filterPoints]) => ({
+  name: filterName,
+  count: filterPoints(points).length,
+}));
