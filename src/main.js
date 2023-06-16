@@ -1,7 +1,7 @@
 import Presenter from './presenter/presenter';
 import FiltersView from './view/FiltersView';
 import TripModel from './model/tripModel';
-import { render } from './render';
+import { render } from './framework/render';
 
 const filtersContainer = document.querySelector('.trip-controls__filters');
 render(new FiltersView(), filtersContainer);

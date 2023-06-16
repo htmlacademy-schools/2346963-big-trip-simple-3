@@ -2,7 +2,7 @@ import PointView from '../view/RoutePointView.js';
 import RedactionView from '../view/RedactionFormView.js';
 import SortingView from '../view/SortView.js';
 import TripEventsView from '../view/EventListView.js';
-import {render} from '../render.js';
+import {render} from '../framework/render.js';
 import EmptyListView from '../view/EmptyListView.js';
 
 export default class Presenter {
@@ -50,18 +50,17 @@ export default class Presenter {
       }
     };
 
-    pointComponent.element.querySelector('.event__rollup-btn').addEventListener('click', () => {
+    pointComponent.setClickHandler (() => {
       replacePointWithForm();
       document.addEventListener('keydown', closeFormOnEscape);
     });
 
-    editPointComponent.element.querySelector('.event__save-btn').addEventListener('submit', (evt) => {
-      evt.preventDefault();
+    editPointComponent.setSubmitHandler(() => {
       replaceFormWithPoint();
       document.removeEventListener('keydown', closeFormOnEscape);
     });
 
-    editPointComponent.element.querySelector('.event__rollup-btn').addEventListener('click', () => {
+    editPointComponent.setClickHandler(() => {
       replaceFormWithPoint();
       document.removeEventListener('keydown', closeFormOnEscape);
     });
