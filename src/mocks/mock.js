@@ -39,3 +39,4 @@ export const generatePoint = () => {
     offers: offersForType.slice(getRandomInt(0, offersForType.length - 1))
   };
 };
+
