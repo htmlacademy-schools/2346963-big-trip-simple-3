@@ -1,11 +1,15 @@
-import { generatePoint } from '../mocks/mock';
+import { generatePoints } from '../mocks/mock';
+
+const POINT_COUNT = 3;
 
 export default class TripModel {
+  #points = [];
 
-  #points = Array.from({length: 2}, generatePoint);
+  constructor() {
+    this.#points.push(...generatePoints(POINT_COUNT));
+  }
 
   get points() {
     return this.#points;
   }
-
 }
