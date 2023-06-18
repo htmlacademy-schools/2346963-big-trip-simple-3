@@ -36,6 +36,7 @@ export default class PointsApiService extends ApiService {
     return parsedResponse;
   };
 
+
   addPoint = async (point) => {
     const response = await this._load({
       url: 'points',
